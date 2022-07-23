@@ -23,8 +23,16 @@
 </p-table>
 
 
-<p-dialog header="Title" [(visible)]="display" [closable]="false">
-    <input type="text" placeholder="Code" pInputText />
-    <button pButton pRipple type="button" label="Close" class="p-button-rounded" (click)="closeDialog()"></button>
-</p-dialog>
+<p-dialog [(visible)]="display" [modal]="true" [style]="{width: '50vw'}">
 
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <input type="text" placeholder="Code" pInputText class="input_field p-input-filled" formControlName="code" />
+        <input type="text" placeholder="Name" pInputText class="input_field p-input-filled" formControlName="name" />
+        <input type="text" placeholder="Address" pInputText class="input_field p-input-filled" formControlName="address" />
+        <input type="text" placeholder="Contact" pInputText class="input_field p-input-filled" formControlName="contact_phone" />
+    </form>
+
+    <button pButton pRipple type="button" label="Save" type="submit" (click)="onSubmit()"></button>
+    <button pButton pRipple type="button" label="Close" class="p-button-secondary" (click)="onClose()"></button>
+
+</p-dialog>

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {TableModule} from 'primeng/table';
+import { Component, OnInit , EventEmitter, Output} from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-transporter',
@@ -7,6 +7,10 @@ import {TableModule} from 'primeng/table';
   styleUrls: ['./transporter.component.scss']
 })
 export class TransporterComponent implements OnInit {
+  form: FormGroup;
+  @Output() formSubmit = new EventEmitter();
+
+  display: boolean = false;
 
   transporters: any[] = [
     {
@@ -17,19 +21,29 @@ export class TransporterComponent implements OnInit {
     },
   ];
 
-  display: boolean = false;
-
-  showDialog() {
-      this.display = true;
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      id: '',
+      code: '',
+      name: '',
+      address: '',
+      contact_phone: ''
+    });
   }
-
-  closeDialog(){
-    this.display = false;
-  }
-
-  constructor() { }
 
   ngOnInit(): void {
   }
 
+  showDialog() {
+    this.display = true;
+  }
+
+  onClose(){
+    this.display = false;
+  }
+
+  onSubmit(): void {
+    const payload = this.form.value;
+    this.formSubmit.emit(payload);
+  }
 }
