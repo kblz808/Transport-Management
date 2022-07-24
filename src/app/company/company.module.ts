@@ -12,6 +12,8 @@ import { TransporterFormComponent } from './components/ui/transporter-form/trans
 
 import {SharedModule} from '../shared/shared.module';
 
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+
 @NgModule({
   declarations: [
     TransporterComponent,
@@ -26,6 +28,7 @@ import {SharedModule} from '../shared/shared.module';
     ReactiveFormsModule,
     DynamicDialogModule,
     SharedModule,
+    ProgressSpinnerModule,
   ],
   exports: [
     TransporterComponent,

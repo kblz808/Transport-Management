@@ -33,8 +33,6 @@ export class TransporterFormComponent implements OnInit {
 
   onSubmit(): void {
     const payload = this.form.value;
-    // const payload = this.form;
-    // console.log(this.form.controls);
     this.ref.close(payload)
   }
 }

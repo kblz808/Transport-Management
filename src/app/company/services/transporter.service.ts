@@ -1,13 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ID } from '@datorama/akita';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { Transporter } from '../models/transporter.model';
-// import { TransporterQuery } from '../state/transporter.query';
-// import { TransporterStore } from '../state/transporter.store';
-
 
 @Injectable({ providedIn: 'root' })
 export class TransporterService {
@@ -16,7 +12,7 @@ export class TransporterService {
     constructor(private http: HttpClient) {}
 
     addTransporter(data: Transporter): Observable<Transporter>{        
-        return this.http.post<Transporter>(`${environment.apiUrl}/transporters`, {data});
+        return this.http.post<Transporter>(`${environment.apiUrl}/transporters`, {...data});
     }
 
     getTransporters(): Observable<Transporter[]>{

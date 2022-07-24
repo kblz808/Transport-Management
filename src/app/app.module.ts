@@ -16,6 +16,8 @@ import {TableModule} from 'primeng/table';
 
 import { CompanyModule } from './company/company.module';
 
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -30,6 +32,7 @@ import { CompanyModule } from './company/company.module';
     HttpClientModule,
     TableModule,
     CompanyModule,
+    ProgressSpinnerModule
   ],
   providers: [
     MessageService
