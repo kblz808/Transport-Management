@@ -7,10 +7,17 @@ import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import { TransporterFormComponent } from './components/ui/transporter-form/transporter-form.component';
+
+import {SharedModule} from '../shared/shared.module';
+
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
-    TransporterComponent
+    TransporterComponent,
+    TransporterFormComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +25,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     DialogModule,
     ButtonModule,
     InputTextModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DynamicDialogModule,
+    SharedModule,
+    ProgressSpinnerModule,
   ],
   exports: [
     TransporterComponent,

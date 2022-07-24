@@ -1,0 +1,15 @@
+<p-table [value]="data">
+    <ng-template pTemplate="header">
+        <tr>
+            <th *ngFor="let column of columns">{{column}}</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-datas>
+        <tr>
+            <td>{{datas.code}}</td>
+            <td>{{datas.name}}</td>
+            <td>{{datas.address}}</td>
+            <td>{{datas.contact_phone}}</td>
+        </tr>
+    </ng-template>
+</p-table>

@@ -1,38 +1,7 @@
-<button pButton pRipple type="button" label="New" class="p-button-rounded" icon="pi pi-plus" (click)="showDialog()"></button>
+<button pButton pRipple type="button" label="New" class="p-button-rounded" icon="pi pi-plus" (click)="show()"></button>
 
 <br>
 <br>
 
-<p-table [value]="transporters">
-    <ng-template pTemplate="header">
-        <tr>
-            <th>Code</th>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Contact Phone</th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-transporter>
-        <tr>
-            <td>{{transporter.code}}</td>
-            <td>{{transporter.name}}</td>
-            <td>{{transporter.address}}</td>
-            <td>{{transporter.contact_phone}}</td>
-        </tr>
-    </ng-template>
-</p-table>
-
-
-<p-dialog [(visible)]="display" [modal]="true" [style]="{width: '50vw'}">
-
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <input type="text" placeholder="Code" pInputText class="input_field p-input-filled" formControlName="code" />
-        <input type="text" placeholder="Name" pInputText class="input_field p-input-filled" formControlName="name" />
-        <input type="text" placeholder="Address" pInputText class="input_field p-input-filled" formControlName="address" />
-        <input type="text" placeholder="Contact" pInputText class="input_field p-input-filled" formControlName="contact_phone" />
-    </form>
-
-    <button pButton pRipple type="button" label="Save" type="submit" (click)="onSubmit()"></button>
-    <button pButton pRipple type="button" label="Close" class="p-button-secondary" (click)="onClose()"></button>
-
-</p-dialog>
+<p-progressSpinner *ngIf="loading == true"></p-progressSpinner>
+<app-list [columns]="columns" [data]="transporters"></app-list>
