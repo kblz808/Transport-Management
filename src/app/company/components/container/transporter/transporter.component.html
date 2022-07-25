@@ -4,4 +4,4 @@
 <br>
 
 <p-progressSpinner *ngIf="loading == true"></p-progressSpinner>
-<app-list [columns]="columns" [data]="transporters"></app-list>
+<app-list [cols]="columns" [data]="transporters" (actionEdit)="onEdit($event)"></app-list>

@@ -8,6 +8,8 @@ import {DynamicDialogModule} from 'primeng/dynamicdialog';
 
 import {TableModule} from 'primeng/table';
 
+import {ButtonModule} from 'primeng/button';
+
 @NgModule({
   declarations: [
     ListComponent
@@ -17,7 +19,8 @@ import {TableModule} from 'primeng/table';
     ReactiveFormsModule,
     DialogModule,
     DynamicDialogModule,
-    TableModule
+    TableModule,
+    ButtonModule
   ],
   exports: [
     ListComponent
