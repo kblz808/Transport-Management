@@ -1,7 +1,7 @@
-<button pButton pRipple type="button" label="New" class="p-button-rounded" icon="pi pi-plus" (click)="show()"></button>
+<button pButton pRipple type="button" label="New Transporter" class="p-button-rounded" icon="pi pi-plus" (click)="show()"></button>
 
 <br>
 <br>
 
 <p-progressSpinner *ngIf="loading == true"></p-progressSpinner>
-<app-list [columns]="columns" [data]="transporters"></app-list>
+<app-list [cols]="columns" [data]="transporters" (actionEdit)="onEdit($event)"></app-list>

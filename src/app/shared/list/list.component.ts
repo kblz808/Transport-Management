@@ -7,11 +7,19 @@ import { Transporter } from 'src/app/company/models/transporter.model';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  @Input() columns: any;
+  @Input() cols: any[] = [];
   @Input() data:Transporter[] = [];
+
+  @Output() actionEdit = new EventEmitter<Transporter>();
+
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  clicked(data: Transporter){
+    this.actionEdit.emit(data);
+    
+  }
 
 }

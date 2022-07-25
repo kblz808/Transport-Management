@@ -21,7 +21,7 @@ export class TransporterService {
         )    
     }
 
-    updateTransporter(id: string, changes: any): Observable<Transporter>{
+    updateTransporter(id: number, changes: any): Observable<Transporter>{
         return this.http.put<Transporter>(`${this.baseUrl}/transporters/${id}`, changes);
     }
 

@@ -18,21 +18,17 @@ import { FormGroup } from '@angular/forms';
 })
 export class TransporterComponent implements OnInit {
 
-  columns: string[] = ['Code', 'Name', 'Address', 'Contact Phone'];
-
-  // transporters: Transporter[] = [{
-  //   id: 0,
-  //   code: 'code name',
-  //   name: 'name',
-  //   address: 'test address',
-  //   contact_phone: 'test phone',
-  // }];
-
   loading = true;
   transporters: Transporter[] = [];
 
-  // transporters$: Observable<Transporter[]> = this.query.selectAll();
-  // transporters$: Observable<Transporter[]> = [];
+  columns: any[] = [
+    {field: 'code', header: 'Code'},
+    {field: 'name', header: 'Name'},
+    {field: 'address', header: 'Address'},
+    {field: 'contact_phone', header: 'Contact Phone'},
+    {field: '_action', header: 'Edit'}
+
+  ];
 
   constructor(public dialogService: DialogService, private service:TransporterService, private query: TransporterQuery,  private transporterStore: TransporterStore) {}
 
@@ -83,6 +79,40 @@ export class TransporterComponent implements OnInit {
           });
         });
         this.transporterStore.setLoading(false);
+      }
+    });
+  }
+
+  onEdit(data: Transporter){
+    // console.log(data);
+
+    const ref = this.dialogService.open(TransporterFormComponent, {
+      header: 'Add new transporter',
+      width: '70%',
+      data: data
+    });
+
+    ref.onClose.subscribe((data: Transporter) => {
+      if(data){
+        this.service.updateTransporter(data.id, data).subscribe(res => {
+          this.transporterStore.update(state => {
+            const transporters = [...state.transporters];
+            const index = this.transporters.findIndex(t => t.id === data.id);
+
+            transporters[index] = {
+              ...transporters[index],
+              code: res.code,
+              name: res.name,
+              address: res.address,
+              contact_phone: res.contact_phone
+            };
+            return{
+              ...state,
+              transporters
+            };
+          });
+        }, err => console.log(err)
+        );
       }
     });
   }
